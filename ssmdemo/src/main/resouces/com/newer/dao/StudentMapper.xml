@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newer.dao.StudentMapper">
+    <resultMap id="stuList1" type="com.newer.pojo.Student">
+        <id property="stuId" column="STUID"/>
+        <result property="stuName" column="STUNAME"/>
+        <result property="stuSex" column="STUSEX"/>
+        <result property="stuJoinTime" column="STUJOINTIME"/>
+        <association property="stuClass" javaType="com.newer.pojo.ClassInfo">
+            <id property="classId" column="CLASSID"/>
+            <result property="className" column="CLASSNAME"/>
+        </association>
+    </resultMap>
+
+    <update id="updateStudent" parameterType="com.newer.pojo.Student">
+        UPDATE  stuinfo
+        <!--<set>-->
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="stuName!=null and stuName!=''">
+                stuname=#{stuName},
+            </if>
+            <if test="stuSex!=null and stuSex!=''">
+                stusex=#{stuSex},
+            </if>
+            <if test="stuClass!=null and stuClass.classId!=null">
+                sclassid=#{stuClass.classId}
+            </if>
+        </trim>
+        <!--</set>-->
+        where stuid=#{stuId}
+    </update>
+</mapper>

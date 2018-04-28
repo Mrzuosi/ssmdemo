@@ -1,44 +1,37 @@
 package com.newer.pojo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Student {
-    private int stuId;
+    private Integer stuId;
     private String stuName;
-    private char stuSex;
+    private String stuSex;
     private String stuCard;
     private Date stuJoinTime;
     private String stuAddress;
-    private int sclassid;
+    private ClassInfo stuClass;
 
-    public int getStuId() {
+    public Integer getStuId() {
         return stuId;
     }
 
-    public void setStuId(int stuId) {
+    public void setStuId(Integer stuId) {
         this.stuId = stuId;
     }
+
     public String getStuName() {
         return stuName;
     }
 
-    public void setStuName(String stuName){
+    public void setStuName(String stuName) {
         this.stuName = stuName;
     }
-    public String getStuAddress() {
-        return stuAddress;
-    }
 
-    public void setStuAddress(String stuAddress) {
-        this.stuAddress = stuAddress;
-    }
-
-
-    public char getStuSex() {
+    public String getStuSex() {
         return stuSex;
     }
 
-    public void setStuSex(char stuSex) {
+    public void setStuSex(String stuSex) {
         this.stuSex = stuSex;
     }
 
@@ -58,11 +51,19 @@ public class Student {
         this.stuJoinTime = stuJoinTime;
     }
 
-    public int getSclassid() {
-        return sclassid;
+    public String getStuAddress() {
+        return stuAddress;
     }
 
-    public void setSclassid(int sclassid) {
-        this.sclassid = sclassid;
+    public void setStuAddress(String stuAddress) {
+        this.stuAddress = stuAddress;
+    }
+
+    public ClassInfo getStuClass() {
+        return stuClass;
+    }
+
+    public void setStuClass(ClassInfo stuClass) {
+        this.stuClass = stuClass;
     }
 }

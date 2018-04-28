@@ -7,36 +7,31 @@ import org.springframework.stereotype.Service;
 
 @Aspect
 @Service("logAspect")
-public class LogAdpect {
-
+public class LogAspect {
     @Pointcut("execution(* com.newer.service.*.*(..))")
     public void anyMethod(){
 
     }
-
     @Before("anyMethod()")
     public void before(JoinPoint joinPoint){
-        String name = joinPoint.getSignature().getName();
-        System.out.println(name+"方法的前置通知");
+        String name=joinPoint.getSignature().getName();
+        System.out.println(name+"前置通知");
     }
 
     @AfterReturning("anyMethod()")
-    public void afterMethod(){
+    public void after(){
         System.out.println("后置通知");
     }
 
-
-//    public void afterThrowing(Exception e)throws Throwable{
-//        System.out.println("异常通知");
-//    }
     @After("anyMethod()")
     public void finalMethod(){
         System.out.println("最终通知");
     }
 
     @Around("anyMethod()")
-    public Object aroundMethod(ProceedingJoinPoint proceedingJoinPoint)throws Throwable{
+    public Object around(ProceedingJoinPoint pjp)throws Throwable{
         System.out.println("环绕通知");
-        return proceedingJoinPoint.proceed();
+      return pjp.proceed();
     }
+
 }
